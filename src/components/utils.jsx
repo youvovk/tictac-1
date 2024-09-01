@@ -1,4 +1,4 @@
-export const getWinner = (playerText:string) => {
+export const getWinner = (playerText) => {
   if (playerText === "You win!") {
     return "winner-text";
   } else if (playerText === "You lost!") {
@@ -7,23 +7,20 @@ export const getWinner = (playerText:string) => {
     return "";
   }
 };
-interface WinLine {
-  type: string;
-  position: number;
-}
-export const getWinLineTypeAndPosition = (winningCombination:number[]) : WinLine => {
+
+export const getWinLineTypeAndPosition = (winningCombination) => {
   const [a, b, c] = winningCombination;
   if (
-    (a === 0 && b === 1 && c === 2) ||
-    (a === 3 && b === 4 && c === 5) ||
-    (a === 6 && b === 7 && c === 8)
+      (a === 0 && b === 1 && c === 2) ||
+      (a === 3 && b === 4 && c === 5) ||
+      (a === 6 && b === 7 && c === 8)
   ) {
     const rowIndex = Math.floor(a / 3);
-    return { type: `horisontal-${rowIndex === 0 ? "up" : rowIndex === 1 ? "center" : "down"}`, position: rowIndex };
+    return { type: `horizontal-${rowIndex === 0 ? "up" : rowIndex === 1 ? "center" : "down"}`, position: rowIndex };
   } else if (
-    (a === 0 && b === 3 && c === 6) ||
-    (a === 1 && b === 4 && c === 7) ||
-    (a === 2 && b === 5 && c === 8)
+      (a === 0 && b === 3 && c === 6) ||
+      (a === 1 && b === 4 && c === 7) ||
+      (a === 2 && b === 5 && c === 8)
   ) {
     const colIndex = a % 3;
     return { type: `vertical-${colIndex === 0 ? "left" : colIndex === 1 ? "center" : "right"}`, position: colIndex };
